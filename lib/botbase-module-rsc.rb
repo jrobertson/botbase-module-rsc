@@ -5,6 +5,7 @@
 # A service module used by the BotBase gem
 
 require 'rsc'
+require 'shellwords'
 
 
 class BotBaseModuleRSC
@@ -17,7 +18,7 @@ class BotBaseModuleRSC
   end
 
   def query(s)
-    r = @rsc.gg.execute_command @alias_file, String.new(s)
+    r = @rsc.gg.execute_command @alias_file, *Shellwords::shellwords(s)
     r != 'job not found' ? r : nil
   end
 
