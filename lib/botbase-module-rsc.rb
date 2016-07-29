@@ -17,9 +17,12 @@ class BotBaseModuleRSC
 
   end
 
-  def query(s)
-    r = @rsc.gg.execute_command @alias_file, *Shellwords::shellwords(s)
+  def query(s, package=:gg, job=:execute_command)
+    
+    r = @rsc.send(package).method(job).call \
+              @alias_file, *Shellwords::shellwords(s)
     r != 'job not found' ? r : nil
+    
   end
 
 end
