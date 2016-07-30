@@ -10,12 +10,10 @@ require 'shellwords'
 
 class BotBaseModuleRSC
   
-  def initialize(host: nil, package_src: nil, alias_file: nil, package: :gg, 
+  def initialize(host: nil, package_src: nil, package: :gg, 
                  job: :execute_command)
     
-    @rsc = RSC.new(host, package_src)
-    @alias_file = alias_file
-    @package, @job = @rsc.send(package), job
+    @package, @job = RSC.new(host, package_src).send(package), job
 
   end
 
