@@ -10,18 +10,19 @@ require 'shellwords'
 
 class BotBaseModuleRSC
   
-  def initialize(host: nil, package_src: nil, alias_file: nil)
+  def initialize(host: nil, package_src: nil, alias_file: nil, package: :gg, 
+                 job: :execute_command)
     
     @rsc = RSC.new(host, package_src)
     @alias_file = alias_file
+    @package, @job = @rsc.send(package), job
 
   end
 
-  def query(s, package=:gg, job=:execute_command)
+  def query(s)
     
-    r = @rsc.send(package).method(job).call \
-              @alias_file, *Shellwords::shellwords(s)
-    r != 'job not found' ? r : nil
+    r = @package.method(@job).call *Shellwords::shellwords(s)
+    r != 'wjob not found' ? r : nil
     
   end
 
