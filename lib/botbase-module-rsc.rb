@@ -5,7 +5,6 @@
 # A service module used by the BotBase gem
 
 require 'rsc'
-require 'shellwords'
 
 
 class BotBaseModuleRSC
@@ -18,10 +17,8 @@ class BotBaseModuleRSC
   end
 
   def query(s)
-    
-    r = @package.method(@job).call *Shellwords::shellwords(s)
-    r != 'wjob not found' ? r : nil
-    
+    r = @package.method(@job).call String.new(s)
+    r != 'job not found' ? r : nil    
   end
 
 end
