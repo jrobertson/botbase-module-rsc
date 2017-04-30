@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'botbase-module-rsc'
-  s.version = '0.3.0'
+  s.version = '0.3.1'
   s.summary = 'A botbase gem service module to run remote RSF jobs using the Rsc gem.'
   s.authors = ['James Robertson']
   s.files = Dir['lib/botbase-module-rsc.rb']
@@ -8,6 +8,6 @@ Gem::Specification.new do |s|
   s.signing_key = '../privatekeys/botbase-module-rsc.pem'
   s.cert_chain  = ['gem-public_cert.pem']
   s.license = 'MIT'
-  s.email = 'james@r0bertson.co.uk'
+  s.email = 'james@jamesrobertson.eu'
   s.homepage = 'https://github.com/jrobertson/botbase-module-rsc'
 end
