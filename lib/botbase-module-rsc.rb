@@ -16,9 +16,10 @@ class BotBaseModuleRSC
 
   end
 
-  def query(sender='user01', s, mode: :textchat)
+  def query(sender='user01', s, mode: :textchat, echo_node: 'node1')
     r = @package.method(@job).call String.new(s)
-    r == 'job not found' ? nil : r
+    #puts 'r: ' + r.inspect
+    r == 'job not found' ? [] : r
   end
 
 end
