@@ -10,7 +10,7 @@ require 'rsc'
 class BotBaseModuleRSC
   
   def initialize(host: nil, package_src: nil, package: :gg, 
-                 job: :execute_command)
+                 job: :execute_command, callback: nil)
     
     @package, @job = RSC.new(host, package_src).send(package), job
 
@@ -19,7 +19,14 @@ class BotBaseModuleRSC
   def query(sender='user01', s, mode: :textchat, echo_node: 'node1')
     r = @package.method(@job).call String.new(s)
     #puts 'r: ' + r.inspect
-    r == 'job not found' ? [] : r
+    
+    if r == 'job not found' then
+      notice 'botbase/debug: module-conversation queried, found ' + found[0]
+      []
+    else
+      r
+    end
+
   end
 
 end
