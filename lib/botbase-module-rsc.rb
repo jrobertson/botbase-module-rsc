@@ -9,15 +9,14 @@ require 'rsc'
 
 class BotBaseModuleRSC
   
-  def initialize(host: nil, package_src: nil, package: :gg, 
-                 job: :execute_command, callback: nil)
+  def initialize(host: nil, package: :gg, job: :execute_command, callback: nil)
     
-    @package, @job, @bot = RSC.new(host, package_src).send(package), 
-        job, callback
+    @package, @job, @bot = RSC.new(host).send(package), job, callback
 
   end
 
   def query(sender='user01', s, mode: :textchat, echo_node: 'node1')
+    
     r = @package.method(@job).call String.new(s)
     
     if r == 'job not found' then
