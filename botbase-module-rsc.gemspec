@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'botbase-module-rsc'
-  s.version = '0.4.0'
+  s.version = '0.4.1'
   s.summary = 'A botbase gem service module to run remote RSF jobs using ' + 
       'the Rsc gem.'
   s.authors = ['James Robertson']

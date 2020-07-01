@@ -9,9 +9,11 @@ require 'rsc'
 
 class BotBaseModuleRSC
   
-  def initialize(host: nil, package: :gg, job: :execute_command, callback: nil)
+  def initialize(host: nil, package: :gg, job: :execute_command, 
+                 callback: nil, debug: false)
     
-    @package, @job, @bot = RSC.new(host).send(package), job, callback
+    @package, @job, @bot, @debug = RSC.new(host, debug: debug).send(package), 
+        job, callback, debug
 
   end
 
